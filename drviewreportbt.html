@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Patient Bob Report</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: indianred;
+        color: black;
+        margin: 0;
+        padding: 20px;
+    }
+    h1 {
+        font-size: 50px;
+        text-align: center;
+        font-weight: bold;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    th, td {
+        border: 1px solid white;
+        text-align: left;
+        padding: 8px;
+    }
+    th {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+    button {
+        background-color: lightblue;
+        color: cornflowerblue;
+        border: none;
+        border-radius: 4px;
+        padding: 8px 12px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+    button:hover {
+        background-color: rgba(255, 255, 255, 0.8);
+    }
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    li {
+        margin-bottom: 5px;
+    }
+    .patient-photo {
+        width: 400px;
+    }
+    .human-body {
+        background-image: url('body.jpeg');
+        background-repeat: no-repeat;
+        background-size: absolute;
+        width: 300px;
+        height: 800px;
+        position: relative;
+    }
+    .report {
+        position: absolute;
+    }
+</style>
+</head>
+<body>
+<table>
+  <td rowspan="2">
+    <h1><strong>Bob Smith</strong></h1>
+  </td>
+  <tr>
+    <td rowspan="2" class="human-body">
+      <div class="report" style="top: 20%; left: 70%;">
+        <p>herniated disc - 02/01/2023</p>
+        <a href="headache_report.html"><button>View</button></a>
+        <button>Print</button>
+      </div>
+      <div class="report" style="top: 10%; left: 70%;">
+        <p>sprained ankle - 02/01/2023</p>
+        <a href="insomnia.html"><button>View</button></a>
+
+        <button>Print</button>
+      </div>
+      <div class="report" style="top: 60%; left: 30%;">
+        <p>Depression - 02/01/2023</p>
+           <a href="depression.html"><button>View</button></a>
+        <button>Print</button>
+      </div>
+       <div class="report" style="top: 30%; left: 30%;">
+        <p>pain - 02/01/2023</p>
+          <a href="backpain.html"><button>View</button></a>
+        <button>Print</button>
+      </div>
+    
+    <td colspan="1">
+      <h2>Medical Report</h2>
+<table>
+    <tr>
+        <th>Condition</th>
+        <th>Date</th>
+        <th>View</th>
+        <th>Print</th>
+    </tr>
+    <tr>
+        <td>herniated disc </td>
+        <td>02/01/2023</td>
+        <td><a href="herniated_disc_report.html"><button>View</button></a></td>
+        <td><button>Print</button></td>
+    </tr>
+    <tr>
+        <td>sprained ankle</td>
+        <td>02/01/2023</td>
+        <td><a href="sprained_ankle_report.html"><button>View</button></a></td>
+        <td><button>Print</button></td>
+    </tr>
+    <tr>
+        <td>Depression</td>
+        <td>02/01/2023</td>
+        <td><a href="depression.html"><button>View</button></a></td>
+        <td><button>Print</button></td>
+    </tr>
+    <tr>
+        <td>pain</td>
+        <td>02/01/2023</td>
+        <td><a href="pain.html"><button>View</button></a></td>
+        <td><button>Print</button></td>
+    </tr>
+
+</table>
+    </td>
+  </tr>
+</table>
+</body>
+</html>
+

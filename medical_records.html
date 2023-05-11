@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Medical Records</title>
+ <style>
+        body {
+            background-color: rgb(160, 176, 192);
+        }
+
+        .top-text {
+            position: fixed;
+            height: fit-content;
+            width: fit-content;
+        }
+        table {
+            width: 100%;
+            height: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 2px solid black;
+            text-align: left;
+            padding: 8px;
+        }
+        td {
+            vertical-align: top;
+        }
+        .my-box {
+            margin-top: 0px;
+            position: fixed;
+            top: 50;
+            left: 5;
+
+            width: 99%;
+            height: 80%;
+            box-sizing: border-box;
+            padding: 20px;
+
+            background-color: #f2f2f2;
+            border: 1px solid #ccc;
+            border-color: black;
+        }
+        .baymaxLogoSmall {
+            position: absolute;
+            top: 0px;
+            right: 0px; 
+        }
+        button {
+            height: 50px;
+            width: 220px;
+            margin-left: 110px;
+
+        }
+
+  </style>
+</head>
+<body>
+
+<?php
+
+session_start();
+
+if (!isset($_SESSION["email"])) {
+    header("Location: login.php"); // Redirect to the login page if the user is not logged in
+    exit;
+}
+
+
+
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "testing";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT * FROM demographics WHERE email = '" . $_SESSION["email"] . "'";
+
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+} else {
+    echo "0 results";
+}
+
+$conn->close();
+?>
+
+
+<img src="baymaxLogoSmall.png" class="baymaxLogoSmall">
+
+    <div class="top-text">
+
+        <p style="color: white; font-size: 40px; margin-left: 20px;">
+
+    <b><?php echo isset($row["firstname"]) ? $row["firstname"] : "N/A"; ?> <?php echo isset($row["lastname"]) ? $row["lastname"] : "N/A"; ?></b>
+
+
+            
+            <button id = "MedicalRecords">Medical Records</button>
+            <button id = "DoctorReports">Doctor Reports</button>
+            <button id = "Appointments">Appointments</button> 
+
+        </p>
+
+
+    <h1>Patient Medical Records</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Past Visit - Date</th>
+                <th>Vital Levels</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>01/01/2022</td>
+                <td>
+                    Body temperature: 98.6°F<br>
+                    Pulse rate: 75 bpm<br>
+                    Respiration rate: 16 breaths/min<br>
+                    Blood pressure: 120/80 mm Hg<br>
+                    O2 levels: 98%<br>
+                    <!-- Add other vital levels as needed -->
+                </td>
+            </tr>
+            <!-- Add more rows for additional visits -->
+        </tbody>
+    </table>
+</body>
+</html>

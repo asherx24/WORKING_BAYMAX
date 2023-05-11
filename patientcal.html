@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>patient cal View</title>
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.6/index.global.min.js'></script>
+     <link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css' rel='stylesheet' />
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.print.min.css' rel='stylesheet' media='print' />
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js'>
+
+</script>
+
+    <script>
+
+
+
+function highlightActiveTab() {
+    const currentPage = window.location.pathname.split('/').pop();
+    const buttonIds = {
+      'PatientDoctorReports.php': 'DoctorReports',
+      'FINISHED_patientMedicalRecords.php': 'MedicalRecords',
+         'patientcal.html': 'calendar',
+    };
+
+
+
+
+    Object.keys(buttonIds).forEach((page) => {
+      const buttonId = buttonIds[page];
+      const button = document.getElementById(buttonId);
+      if (currentPage === page) {
+        button.style.fontWeight = 'bold';
+    button.style.border = '3px solid black';
+      } else {
+        button.style.fontWeight = 'normal';
+        button.style.border = 'none';
+      }
+    });
+  }
+
+</script>
+
+<script>
+
+window.onload = function() {
+
+
+           highlightActiveTab(); 
+      document.getElementById("DoctorReports").addEventListener("click", function() {
+                window.location.href = "PatientDoctorReports.php";
+            });
+            document.getElementById("MedicalRecords").addEventListener("click", function() {
+                window.location.href = "FINISHED_patientMedicalRecords.php";
+            });
+     document.getElementById("calendar").addEventListener("click", function() {
+                window.location.href = "patientcal.html";
+            });
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+<script>
+
+  document.addEventListener('DOMContentLoaded', function() {
+    fetch('exampleGetEvents.php')
+      .then(response => response.json())
+      .then(events => {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,agendaWeek,agendaDay'
+          },
+          editable: true,
+          selectable: true,
+          select: function(selectionInfo) {
+            var eventForm = document.getElementById('eventForm');
+            document.getElementById('start').value = selectionInfo.startStr.substr(0, 16);
+            document.getElementById('end').value = selectionInfo.endStr.substr(0, 16);
+            eventForm.style.display = 'block';
+          },
+          events: events,
+          eventClick: function(info) {
+            if (info.event.title === "John Doe") {
+    window.location.href = "johndoe.html";
+  } else {
+    window.location.href = "DoctorMedicalRecordView.html" + info.event.id;
+  }
+}
+
+
+
+
+        });
+        calendar.render();
+      })
+      .catch(error => {
+        console.error('Error fetching events:', error);
+      });
+
+    document.getElementById('addEventForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      var eventData = {
+        title: document.getElementById('title').value,
+        start: document.getElementById('start').value,
+        end: document.getElementById('end').value,
+        description: document.getElementById('description').value,
+      };
+
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', 'add_event.php', true);
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+          calendar.refetchEvents(); // Refresh the calendar
+        }
+      };
+      xhr.send(JSON.stringify(eventData));
+
+      // Reset the form
+      document.getElementById('addEventForm').reset();
+      document.getElementById('eventForm').style.display = 'none';
+    });
+  });
+</script>
+
+
+
+</head>
+<style>
+        
+        .top-text {
+            position: fixed;
+            height: fit-content;
+            width: fit-content;
+        }
+        table {
+            width: 100%;
+            height: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 2px solid black;
+            text-align: left;
+            padding: 8px;
+        }
+        td {
+            vertical-align: top;
+        }
+        .my-box {
+            margin-top: 0px;
+            position: fixed;
+            top: 50;
+            left: 5;
+
+            width: 99%;
+            height: 80%;
+            box-sizing: border-box;
+            padding: 20px;
+
+            background-color: #f2f2f2;
+            border: 1px solid #ccc;
+            border-color: black;
+        }
+        .baymaxLogoSmall {
+            position: absolute;
+            top: 0px;
+            right: 0px; 
+        }
+        button {
+            height: 50px;
+            width: 220px;
+            margin-left: 110px;
+
+        }
+    .view-btn {
+        padding: 1px 6px;
+        background-color: #E62F31;
+        color: #fff;
+        font-size: 12px;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    </style>
+
+<body style="background-color: indianred;">
+  <img src="baymaxCorner.png" class="baymaxLogoSmall">
+
+  <div id = "Top-Text">
+     <p style="color: white; font-size: 30px;"><b>DR. Doe</b></p>
+
+    <div id="button-container">
+        <button id = "MedicalRecords">My Medical Records</button>
+            <button id = "DoctorReports">Previous Doctor Reports</button>
+            <button id = "calendar">My Calendar</button> 
+    </div>
+    
+    <div class="my-box">
+        <div id = "calendar"></div>
+              </div>
+
+    <div id="eventForm">
+      <form id="addEventForm">
+        <label for="title">Patient Name:</label>
+        <input type="text" id="title" name="title" required><br>
+        <label for="start">Start Time:</label>
+        <input type="datetime-local" id="start" name="start" required><br>
+        <label for="end">End Time:</label>
+        <input type="datetime-local" id="end" name="end" required><br>
+        <label for="description">Description:</label>
+        <textarea id="description" name="description"></textarea><br>
+        <button type="submit">Add Event</button>
+        <button type="button" onclick="document.getElementById('eventForm').style.display='none'">Close</button>
+      </form>
+    </div>
+  </div>
+    <script>
+        // Fetch the name of the logged-in user
+        const loggedInUser = "John Doe"; // Replace this with the actual value from your authentication system
+
+        // Update the patient's name in the top text
+        document.querySelector("#Top-Text > p").innerHTML = `<b>${loggedInUser}</b>`;
+
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('exampleGetEvents.php?user=' + encodeURIComponent(loggedInUser))
+                .then(response => response.json())
+                .then(events => {
+                    // Your existing calendar configuration
+
+                    // Update the add event form based on user role
+                    if (loggedInUser !== "John Doe") { // Replace this condition with the actual value from your authentication system
+                        // Prevent patients from adding events
+                        document.getElementById('addEventForm').style.display = 'none';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching events:', error);
+                });
+        });
+    </script>
+</body>
+
+</html>

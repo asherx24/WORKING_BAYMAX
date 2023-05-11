@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Demographic Page - Baymax Theme</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            position: relative;
+            max-width: 1200px;
+            padding: 20px;
+            margin: 30px auto;
+            box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+        }
+        h2 {
+            margin-bottom: 10px;
+            color: #E62F31;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #2C3E50;
+        }
+        input[type="text"], input[type="number"], input[type="tel"], select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            background-color: #E62F31;
+            color: #fff;
+            padding: 10px;
+            font-size: 18px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #C72A26;
+        }
+        .dob-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .dob-container select {
+            width: 32%;
+        }
+        .address-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 10px;
+        }
+        .baymax-image {
+            position: absolute;
+            width: 115%;
+            height: 115%;
+            top: 0;
+            left: 0;
+            opacity: 1.9;
+            object-fit: contain;
+            z-index: -1;
+        }
+        .column {
+            width: 50%;
+            padding: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://wallpapercave.com/wp/wp1812730.jpg" alt="Baymax" class="baymax-image">
+        <div class="form-container">
+            <div class="column">
+                <h2 class="text-center">Demographic Information</h2>
+                <form action="demo_form.php" method="POST">
+           
+
+
+
+<div class="category">
+                <label for="firstname">First Name:</label>
+                <input type="text" id="firstname" name="firstname" placeholder="Enter first name" required>
+            </div>
+
+            <div class="category">
+                <label for="lastname">Last Name:</label>
+                <input type="text" id="lastname" name="lastname" placeholder="Enter last name" required>
+            </div>
+
+            <div class="category">
+                <label for="heightft">Height:</label>
+                <select id="heightft" name="heightft" required>
+                    <option value="">ft</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                </select>
+            </div>
+
+            <div class="categoryFormat">
+                <label for="heightin">Height Inches</label>
+                <select id="heightin" name="heightin" required>
+                    <option value="">in</option>
+                        <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                </select>
+            </div>
+
+            <div class="category">
+                <label for="weight">Weight:</label>
+                <input type="number" id="weight" name="weight" min="0" placeholder="Enter weight in lbs" required>
+            </div>
+
+
+
+<div class="category">
+                <label for="dob">Date of Birth:</label>
+                <div class="dob-container">
+                    <select id="dobM" name="dobM" required>
+                       <option value="">Month</option>
+                    <option value="jan">January</option>
+                    <option value="feb">February</option>
+                    <option value="mar">March</option>
+                    <option value="apr">April</option>
+                    <option value="may">May</option>
+                    <option value="jun">June</option>
+                    <option value="jul">July</option>
+                    <option value="aug">August</option>
+                    <option value="sep">September</option>
+                    <option value="oct">October</option>
+                    <option value="nov">November</option>
+                    <option value="dec">December</option>
+                    </select>
+                    <select id="dobD" name="dobD" required>
+                           <option value="">Day</option>
+                    <script type="text/javascript">
+
+                            for(var d = 1;d <= 31;d++) {
+                                document.write("<option>"+ d +"</option>");
+                            }
+
+                            </script>
+                    </select>
+                    <select id="dobY" name="dobY" required>
+                            <script type="text/javascript">
+                                
+                                for(var d = 2023; d >= 1900; d--) {
+                                    document.write("<option>"+ d +"</option>");
+                                }
+
+                            </script>
+                    </select>
+                </div>
+            </div>
+
+
+<div class="category">
+                    <label for="gender">Gender:</label>
+                </div>
+                <select id="gender" name="gender" required>
+                    <option value="">Select your gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+
+
+<div class="category">
+    <label for="medications">Medication List:</label>
+    <select id="medications" name="medications[]" multiple required size="5">
+<option value="ibuprofen-200mg">Ibuprofen 200mg</option>
+<option value="paracetamol-500mg">Paracetamol 500mg</option>
+<option value="aspirin-81mg">Aspirin 81mg</option>
+<option value="amlodipine-5mg">Amlodipine 5mg</option>
+<option value="metformin-500mg">Metformin 500mg</option>
+<option value="atorvastatin-10mg">Atorvastatin 10mg</option>
+<option value="levothyroxine-50mcg">Levothyroxine 50mcg</option>
+<option value="lisinopril-10mg">Lisinopril 10mg</option>
+<option value="sertraline-50mg">Sertraline 50mg</option>
+<option value="omeprazole-20mg">Omeprazole 20mg</option>
+<option value="rosuvastatin-10mg">Rosuvastatin 10mg</option>
+<option value="losartan-50mg">Losartan 50mg</option>
+<option value="gabapentin-300mg">Gabapentin 300mg</option>
+<option value="fluoxetine-20mg">Fluoxetine 20mg</option>
+<option value="venlafaxine-75mg">Venlafaxine 75mg</option>
+<option value="tramadol-50mg">Tramadol 50mg</option>
+<option value="alprazolam-0.25mg">Alprazolam 0.25mg</option>
+<option value="diazepam-5mg">Diazepam 5mg</option>
+<option value="clonazepam-0.5mg">Clonazepam 0.5mg</option>
+
+        <!-- Add more medication options as needed -->
+    </select>
+</div>
+
+
+
+
+
+
+
+</div>
+            <div class="column">
+                <h2 class="text-center">Additional Information</h2>
+
+
+
+
+
+
+
+
+
+            
+            
+
+            <div class="category">
+                    <label for="allergies">Allergies List:</label>
+                    <select id="allergies" name="allergies[]" multiple required size="5">
+ <option value="penicillin">Penicillin</option>
+    <option value="insulin">Insulin</option>
+    <option value="pollen">Pollen</option>
+    <option value="peanuts">Peanuts</option>
+    <option value="soy">Soy</option>
+    <option value="wheat">Wheat</option>
+    <option value="fish">Fish</option>
+    <option value="shellfish">Shellfish</option>
+    <option value="milk">Milk</option>
+    <option value="eggs">Eggs</option>
+    <option value="tree_nuts">Tree Nuts</option>
+    <option value="latex">Latex</option>
+    <option value="mold">Mold</option>
+    <option value="dust_mites">Dust Mites</option>
+    <option value="pet_dander">Pet Dander</option>
+    <option value="insect_stings">Insect Stings</option>
+    <option value="nickel">Nickel</option>
+    <option value="formaldehyde">Formaldehyde</option>
+    <option value="perfume">Perfume</option>
+    <option value="pollution">Pollution</option>
+    <option value="cigarette_smoke">Cigarette Smoke</option>
+    <option value="acetaminophen">Acetaminophen</option>
+    <option value="aspirin">Aspirin</option>
+    <option value="ibuprofen">Ibuprofen</option>
+    <option value="naproxen">Naproxen</option>
+    <option value="sulfonamides">Sulfonamides</option>
+    <option value="tetracycline">Tetracycline</option>
+    <option value="ciprofloxacin">Ciprofloxacin</option>
+    <option value="sulfites">Sulfites</option>
+    <option value="msg">MSG</option>
+    <option value="food_coloring">Food Coloring</option>
+                        <!-- Add more allergy options as needed -->
+                    </select>
+                </div>
+            
+
+                <div class="category">
+                    <label for="phonenumber">Phone Number:</label>
+                </div>
+                <input type="tel" id="phonenumber" name="phonenumber" pattern="[0-9]{10}" placeholder="(123)-456-7890" required>
+
+
+
+
+
+
+
+
+ <div class="category">
+                <label for="addressSt">Address:</label>
+                <div class="address-container">
+                    <input type="text" id="addressSt" name="addressSt" placeholder="Enter your address" required>
+                    <label for="aptNum">Apt Number</label>
+                    <input type="text" id="aptNum" name="aptNum" placeholder="Enter your apartment number">
+                    <label for="state">State</label>
+                    <input type="text" id="state" name="state" placeholder="Enter your state" required>
+                    <label for="city">City</label>
+                    <input type="text" id="city" name="city" placeholder="Enter your city" required>
+                    <label for="zipCode">Zip</label>
+                    <input type="text" id="zipCode" name="zipCode" placeholder="Enter your zipcode" required>
+                </div>
+            </div>
+
+
+       <div class="categoryFormat">
+                    <label for="email">Email</label>
+                </div>
+                <input type="text" id="email" name="email" placeholder="Enter your email" required>
+
+              <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+

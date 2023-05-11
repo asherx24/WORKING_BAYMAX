@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Doctor Initial View</title>
+</head>
+<style>
+  		
+	    .top-text {
+	    	position: fixed;
+	      	height: fit-content;
+	      	width: fit-content;
+	    }
+	    table {
+	    	width: 100%;
+	    	height: 100%;
+	    	border-collapse: collapse;
+	    }
+	    th, td {
+	    	border: 2px solid black;
+	    	text-align: left;
+	    	padding: 8px;
+	    }
+	    td {
+	    	vertical-align: top;
+	    }
+	    .my-box {
+	      	margin-top: 0px;
+	        position: fixed;
+	        top: 50;
+	        left: 5;
+
+	        width: 99%;
+	        height: 80%;
+	        box-sizing: border-box;
+	        padding: 20px;
+
+	        background-color: #f2f2f2;
+	        border: 1px solid #ccc;
+	        border-color: black;
+	    }
+	    .baymaxLogoSmall {
+	        position: absolute;
+	        top: 0px;
+	        right: 0px; 
+	    }
+	    button {
+	    	height: 50px;
+	    	width: 220px;
+	    	margin-left: 110px;
+
+	    }
+
+
+  	</style>
+<body style="background-color: rgb(160, 176, 192);">
+
+<div id = "Doctor">
+    <p style="color: white; font-size: 30px;"><b>DR. Max</b></p>
+
+    <div id = "patientList">
+    <button id = "patientList">Patient List</button> 
+
+    <button id = "Reports">Reports</button>
+    <button id = "Appointments">View Appointments</button>
+    </div>
+</div>
+
+<div class="my-box">
+    <table>
+        <tr>
+            <th>Patient Name</th>
+            <th>Patient ID</th>
+            <th>Provider</th>
+            <th>Last Visit</th>
+            <th>Demographic</th>
+        </tr>
+    
+        <tr>
+            <td contenteditable="true">syed hassan</td>
+            <td contenteditable="true">5</td>
+            <td contenteditable="true">Dr. Smith</td>
+            <td contenteditable="true">2023-01-10</td>
+            <td contenteditable="true">Blood pressure: 120/80 mmHg, Pulse: 75 bpm, Temper...</td>
+        </tr>
+        <tr>
+            <td contenteditable="true">kathy mary</td>
+            <td contenteditable="true">6</td>
+            <td contenteditable="true">Dr. Brown</td>
+            <td contenteditable="true">2023-02-20</td>
+            <td contenteditable="true">Blood pressure: 122/82 mmHg, Pulse: 72 bpm, Temper...</td>
+        </tr>
+        <tr>
+            <td contenteditable="true">mark jacs</td>
+            <td contenteditable="true">7</td>
+            <td contenteditable="true">Dr. Johnson</td>
+            <td contenteditable="true">2023-01-05</td>
+            <td contenteditable="true">Blood pressure: 130/85 mmHg, Pulse: 68 bpm, Temper...</td>
+        </tr>
+	     
+	      </table>
+	    </div>
+</body>
+</html>

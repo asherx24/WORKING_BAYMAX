@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Doctor Initial View</title>
+<script>
+     function highlightActiveTab() {
+    const currentPage = window.location.pathname.split('/').pop();
+    const buttonIds = {
+      'exampleInitialDoctorViewcal.html': 'Appointments',
+      'doctorpatientreport.html': 'Reports',
+      'DoctorPatientListView.html': 'patientList',
+    };
+
+    Object.keys(buttonIds).forEach((page) => {
+      const buttonId = buttonIds[page];
+      const button = document.getElementById(buttonId);
+      if (currentPage === page) {
+        button.style.fontWeight = 'bold';
+    button.style.border = '3px solid black';
+      } else {
+        button.style.fontWeight = 'normal';
+        button.style.border = 'none';
+      }
+    });
+  }
+
+
+
+   window.onload = function() {
+    highlightActiveTab(); 
+   
+            document.getElementById('patientList').addEventListener('click', function() {
+                window.location.href = 'DoctorPatientListView.html';
+            });
+
+            document.getElementById('Reports').addEventListener('click', function() {
+                window.location.href = 'doctorpatientreport.html';
+            });
+
+            document.getElementById('Appointments').addEventListener('click', function() {
+                // Add the respective link for View Appointments
+                window.location.href = 'exampleInitialDoctorViewcal.html';
+            });
+        }
+    </script>
+
+
+
+
+</head>
+<style>
+    .top-text {
+        position: fixed;
+        height: fit-content;
+        width: fit-content;
+    }
+    table {
+        width: 100%;
+        height: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        border: 2px solid black;
+        text-align: left;
+        padding: 8px;
+    }
+    td {
+        vertical-align: top;
+    }
+    .my-box {
+        margin-top: 0px;
+        position: fixed;
+        top: 50;
+        left: 5;
+
+        width: 99%;
+        height: 80%;
+        box-sizing: border-box;
+        padding: 20px;
+
+        background-color: #f2f2f2;
+        border: 1px solid #ccc;
+        border-color: black;
+    }
+    .baymaxLogoSmall {
+        position: absolute;
+        top: 0px;
+        right: 0px; 
+    }
+    button {
+        height: 50px;
+        width: 220px;
+    }
+    .view-button {
+        height: 30px;
+        width: 60px;
+    }
+    #button-container {
+        display: flex;
+        justify-content: space-around;
+        position: absolute;
+        top: 30px;
+        width: 100%;
+    }
+</style>
+<body style="background-color: indianred;">
+
+<div id = "Doctor">
+    <p style="color: white; font-size: 30px;"><b>DR. Doe</b></p>
+
+    <div id="button-container">
+        <button id="patientList">Patient List</button>
+         <a href="doctorpatientreport.html"><button id="Reports">Reports</button></a>
+        <button id="Appointments">View Appointments</button>
+    </div>
+</div>
+
+<div class="my-box">
+    <table>
+            <tr>
+            <th>Patient Name</th>
+            <th>View Patient</th>
+            <th>Provider</th>
+            <th>Last Visit</th>
+            <th>Vitals</th>
+        </tr>
+        <tr>
+            <td contenteditable="true">John Doe</td>
+      <td><a href="johndoe.html"><button class="view-button">View</button></a></td>
+            <td contenteditable="true">Dr. Smith</td>
+            <td contenteditable="true">2023-01-15</td>
+            <td contenteditable="true">Body temperature: 98.6°F, Pulse rate: 75 bpm, Resp...</td>
+        </tr>
+        <!-- Add more rows for each record -->
+        <tr>
+            <td contenteditable="true">test one</td>
+             <td><button class="view-button">View</button></td>
+            <td contenteditable="true">Dr. Johnson</td>
+            <td contenteditable="true">2023-02-03</td>
+            <td contenteditable="true">Body temperature: 98.7°F, Pulse rate: 76 bpm, Resp...</td>
+        </tr>
+        <tr>
+            <td contenteditable="true">Bob Smith</td>
+    <td><a href="bobtest.html"><button class="view-button">View</button></a></td>
+            <td contenteditable="true">Dr. Smith</td>
+            <td contenteditable="true">2023-01-22</td>
+            <td contenteditable="true">Body temperature: 98.4°F, Pulse rate: 72 bpm, Resp...</td>
+        </tr>
+        <tr>
+            <td contenteditable="true">email test</td>
+        <td><button class="view-button">View</button></td>
+            <td contenteditable="true">Dr. Johnson</td>
+            <td contenteditable="true">2023-02-10</td>
+            <td contenteditable="true">Body temperature: 98.9°F, Pulse rate: 74 bpm, Resp...</td>
+        </tr>
+        <tr>
+            <td contenteditable="true">syed hassan</td>
+     <td><button class="view-button">View</button></td>
+            <td contenteditable="true">Dr. Smith</td>
+            <td contenteditable="true">2023-01-10</td>
+            <td contenteditable="true">Blood pressure: 120/80 mmHg, Pulse: 75 bpm, Temper...</td>
+        </tr>
+        <tr>
+            <td contenteditable="true">kathy mary</td>
+ <td><button class="view-button">View</button></td>
+            <td contenteditable="true">Dr. Brown</td>
+            <td contenteditable="true">2023-02-20</td>
+            <td contenteditable="true">Blood pressure: 122/82 mmHg, Pulse: 72 bpm, Temper...</td>
+        </tr>
+        <tr>
+            <td contenteditable="true">mark jacs</td>
+             <td><button class="view-button">View</button></td>
+            <td contenteditable="true">Dr. Johnson</td>
+            <td contenteditable="true">2023-01-05</td>
+            <td contenteditable="true">Blood pressure: 130/85 mmHg, Pulse: 68 bpm, Temper...</td>
+        </tr>
+	     
+	      </table>
+	    </div>
+</body>
+</html>

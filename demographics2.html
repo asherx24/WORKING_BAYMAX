@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demographics Page 2</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+         background-color: indianred;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            position: relative;
+            max-width: 1100px;
+            padding: 20px;
+            margin: 60px auto;
+          
+            border-radius: 10px;
+        }
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+             margin: 60px auto;
+        }
+        h2 {
+            margin-bottom: 10px;
+            color: #E62F31;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #2C3E50;
+        }
+        input[type="text"], input[type="number"], input[type="tel"], select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            background-color: #E62F31;
+            color: #fff;
+            padding: 10px;
+            font-size: 18px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #C72A26;
+        }
+        .dob-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .dob-container select {
+            width: 32%;
+        }
+        .address-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 10px;
+        }
+        .baymax-image {
+            position: absolute;
+            width: 115%;
+            height: 115%;
+            top: 0;
+            left: 0;
+            opacity: 1.9;
+            object-fit: contain;
+            z-index: -1;
+        }
+        .column {
+            width: 50%;
+            padding: 0 10px;
+        }
+
+
+   .form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .column {
+            text-align: center;
+        }
+
+
+
+    </style>
+
+    <script>
+        window.onload = function() {
+            const formFields = ['firstname', 'lastname', 'heightft', 'heightin', 'weight', 'dobM', 'dobD', 'dobY', 'gender'];
+            formFields.forEach(field => {
+                const fieldValue = sessionStorage.getItem(field);
+                if (fieldValue) {
+                    document.getElementById(field).value = fieldValue;
+                }
+            });
+        };
+
+        function saveFormDataAndSubmit() {
+            document.getElementById('demographicsForm').submit();
+        }
+    </script>
+</head>
+<body>
+       <div class="container">
+      
+        <div class="form-container">
+            <div class="column">
+    <h2>Demographic Information - Page 2</h2>
+    <form id="demographicsForm" action="demo_form.php" method="POST">
+        <!-- Hidden fields from the first page -->
+        <input type="hidden" id="firstname" name="firstname">
+        <input type="hidden" id="lastname" name="lastname">
+        <input type="hidden" id="heightft" name="heightft">
+        <input type="hidden" id="heightin" name="heightin">
+        <input type="hidden" id="weight" name="weight">
+        <input type="hidden" id="dobM" name="dobM">
+        <input type="hidden" id="dobD" name="dobD">
+        <input type="hidden" id="dobY" name="dobY">
+        <input type="hidden" id="gender" name="gender">
+        
+        <!-- Page 2 form fields -->
+       <div class="category">
+                    <label for="allergies">Allergies List:</label>
+                    <select id="allergies" name="allergies[]" multiple required size="5">
+ <option value="penicillin">Penicillin</option>
+    <option value="insulin">Insulin</option>
+    <option value="pollen">Pollen</option>
+    <option value="peanuts">Peanuts</option>
+    <option value="soy">Soy</option>
+    <option value="wheat">Wheat</option>
+    <option value="fish">Fish</option>
+    <option value="shellfish">Shellfish</option>
+    <option value="milk">Milk</option>
+    <option value="eggs">Eggs</option>
+    <option value="tree_nuts">Tree Nuts</option>
+    <option value="latex">Latex</option>
+    <option value="mold">Mold</option>
+    <option value="dust_mites">Dust Mites</option>
+    <option value="pet_dander">Pet Dander</option>
+    <option value="insect_stings">Insect Stings</option>
+    <option value="nickel">Nickel</option>
+    <option value="formaldehyde">Formaldehyde</option>
+    <option value="perfume">Perfume</option>
+    <option value="pollution">Pollution</option>
+    <option value="cigarette_smoke">Cigarette Smoke</option>
+    <option value="acetaminophen">Acetaminophen</option>
+    <option value="aspirin">Aspirin</option>
+    <option value="ibuprofen">Ibuprofen</option>
+    <option value="naproxen">Naproxen</option>
+    <option value="sulfonamides">Sulfonamides</option>
+    <option value="tetracycline">Tetracycline</option>
+    <option value="ciprofloxacin">Ciprofloxacin</option>
+    <option value="sulfites">Sulfites</option>
+    <option value="msg">MSG</option>
+    <option value="food_coloring">Food Coloring</option>
+                        <!-- Add more allergy options as needed -->
+                    </select>
+                </div>
+            
+
+<div class="category">
+    <label for="medications">Medication List:</label>
+    <select id="medications" name="medications[]" multiple required size="5">
+<option value="ibuprofen-200mg">Ibuprofen 200mg</option>
+<option value="paracetamol-500mg">Paracetamol 500mg</option>
+<option value="aspirin-81mg">Aspirin 81mg</option>
+<option value="amlodipine-5mg">Amlodipine 5mg</option>
+<option value="metformin-500mg">Metformin 500mg</option>
+<option value="atorvastatin-10mg">Atorvastatin 10mg</option>
+<option value="levothyroxine-50mcg">Levothyroxine 50mcg</option>
+<option value="lisinopril-10mg">Lisinopril 10mg</option>
+<option value="sertraline-50mg">Sertraline 50mg</option>
+<option value="omeprazole-20mg">Omeprazole 20mg</option>
+<option value="rosuvastatin-10mg">Rosuvastatin 10mg</option>
+<option value="losartan-50mg">Losartan 50mg</option>
+<option value="gabapentin-300mg">Gabapentin 300mg</option>
+<option value="fluoxetine-20mg">Fluoxetine 20mg</option>
+<option value="venlafaxine-75mg">Venlafaxine 75mg</option>
+<option value="tramadol-50mg">Tramadol 50mg</option>
+<option value="alprazolam-0.25mg">Alprazolam 0.25mg</option>
+<option value="diazepam-5mg">Diazepam 5mg</option>
+<option value="clonazepam-0.5mg">Clonazepam 0.5mg</option>
+
+        <!-- Add more medication options as needed -->
+    </select>
+</div>
+
+
+
+
+
+
+
+
+
+            
+
+                <div class="category">
+                    <label for="phonenumber">Phone Number:</label>
+                </div>
+                <input type="tel" id="phonenumber" name="phonenumber" pattern="[0-9]{10}" placeholder="(123)-456-7890" required>
+
+
+
+
+
+
+
+
+ <div class="category">
+    <label for="addressSt">Address:</label>
+    <input type="text" id="addressSt" name="addressSt" placeholder="Enter your address" required>
+</div>
+
+<div class="address-container">
+    <div>
+        <label for="aptNum">Apt Number</label>
+        <input type="text" id="aptNum" name="aptNum" placeholder="Enter your apartment number">
+    </div>
+    <div>
+        <label for="state">State</label>
+        <select name="state" id="state" required>
+            
+            <option value="" disabled selected hidden>Enter your state</option>
+            <option value="AL">AL</option>
+            <option value="AK">AK</option>
+            <option value="AZ">AZ</option>
+            <option value="AR">AR</option>
+            <option value="CA">CA</option>
+            <option value="CO">CO</option>
+            <option value="CT">CT</option>
+            <option value="DE">DE</option>
+            <option value="FL">FL</option>
+            <option value="GA">GA</option>
+            <option value="HI">HI</option>
+            <option value="ID">ID</option>
+            <option value="IL">IL</option>
+            <option value="IN">IN</option>
+            <option value="IA">IA</option>
+            <option value="KS">KS</option>
+            <option value="KY">KY</option>
+            <option value="LA">LA</option>
+            <option value="ME">ME</option>
+            <option value="MD">MD</option>
+            <option value="MA">MA</option>
+            <option value="MI">MI</option>
+            <option value="MN">MN</option>
+            <option value="MS">MS</option>
+            <option value="MO">MO</option>
+            <option value="MT">MT</option>
+            <option value="NE">NE</option>
+            <option value="NV">NV</option>
+            <option value="NH">NH</option>
+            <option value="NJ">NJ</option>
+            <option value="NM">NM</option>
+            <option value="NY">NY</option>
+            <option value="NC">NC</option>
+            <option value="ND">ND</option>
+            <option value="OH">OH</option>
+            <option value="OK">OK</option>
+            <option value="OR">OR</option>
+            <option value="PA">PA</option>
+            <option value="RI">RI</option>
+            <option value="SC">SC</option>
+            <option value="SD">SD</option>
+            <option value="TN">TN</option>
+            <option value="TX">TX</option>
+            <option value="UT">UT</option>
+            <option value="VT">VT</option>
+            <option value="VA">VA</option>
+            <option value="WA">WA</option>
+            <option value="WV">WV</option>
+            <option value="WI">WI</option>
+            <option value="WY">WY</option>
+
+        </select>
+    </div>
+    <div>
+        <label for="city">City</label>
+        <input type="text" id="city" name="city" placeholder="Enter your city" required>
+    </div>
+    <div>
+        <label for="zipCode">Zip</label>
+        <input type="text" id="zipCode" name="zipCode" placeholder="Enter your zipcode" required>
+    </div>
+</div>
+
+
+
+       <div class="categoryFormat">
+                    <label for="email">Email</label>
+                </div>
+                <input type="text" id="email" name="email" placeholder="Enter your email" required>
+
+
+
+        <button type="button" onclick="saveFormDataAndSubmit()">Submit</button>
+    </form>
+     </div>
+        </div>
+    </div>
+</body>
+</html>

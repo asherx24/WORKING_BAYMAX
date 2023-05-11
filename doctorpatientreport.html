@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Doctor Patient Reports View</title>
+<script>
+     function highlightActiveTab() {
+    const currentPage = window.location.pathname.split('/').pop();
+    const buttonIds = {
+      'exampleInitialDoctorViewcal.html': 'Appointments',
+      'doctorpatientreport.html': 'Reports',
+      'DoctorPatientListView.php': 'patientList',
+    };
+
+    Object.keys(buttonIds).forEach((page) => {
+      const buttonId = buttonIds[page];
+      const button = document.getElementById(buttonId);
+      if (currentPage === page) {
+        button.style.fontWeight = 'bold';
+    button.style.border = '3px solid black';
+      } else {
+        button.style.fontWeight = 'normal';
+        button.style.border = 'none';
+      }
+    });
+  }
+
+   window.onload = function() {
+    highlightActiveTab(); 
+   
+            document.getElementById('patientList').addEventListener('click', function() {
+                window.location.href = 'DoctorPatientListView.php';
+            });
+
+            document.getElementById('Reports').addEventListener('click', function() {
+                window.location.href = 'doctorpatientreport.html';
+            });
+
+            document.getElementById('Appointments').addEventListener('click', function() {
+                // Add the respective link for View Appointments
+                window.location.href = 'exampleInitialDoctorViewcal.html';
+            });
+        }
+
+
+async function printReport(url) {
+  try {
+    const response = await fetch(url);
+    const content = await response.text();
+    const printWindow = window.open('', '_blank');
+    printWindow.document.write(content);
+    printWindow.document.close();
+    printWindow.print();
+  } catch (error) {
+    console.error('Error fetching and printing the report:', error);
+  }
+}
+
+    </script>
+</head>
+<style>
+    .top-text {
+        position: fixed;
+        height: fit-content;
+        width: fit-content;
+    }
+    table {
+        width: 100%;
+        height: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        border: 2px solid black;
+        text-align: left;
+        padding: 8px;
+    }
+    td {
+        vertical-align: top;
+    }
+    .my-box {
+        margin-top: 0px;
+        position: fixed;
+        top: 50;
+        left: 5;
+
+        width: 99%;
+        height: 80%;
+        box-sizing: border-box;
+        padding: 20px;
+
+        background-color: #f2f2f2;
+        border: 1px solid #ccc;
+        border-color: black;
+    }
+    .baymaxLogoSmall {
+        position: absolute;
+        top: 0px;
+        right: 0px; 
+    }
+    button {
+        height: 50px;
+        width: 220px;
+    }
+    .view-button {
+        height: 30px;
+        width: 60px;
+    }
+    #button-container {
+        display: flex;
+        justify-content: space-around;
+        position: absolute;
+        top: 30px;
+        width: 100%;
+    }
+    .upload-form {
+        display: inline-block;
+    }
+    .upload-input {
+        width: 60px;
+        height: 30px;
+        opacity: 0;
+        position: absolute;
+        z-index: 1;
+        cursor: pointer;
+    }
+    .upload-label {
+        background-color: #f2f2f2;
+           border: 1px solid #ccc;
+        border-color: black;
+        display: inline-block;
+        width: 60px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        color: black;
+        cursor: pointer;
+    }
+</style>
+<body style="background-color: indianred;">
+
+<div id="Doctor">
+    <p style="color: white; font-size: 30px;"><b>DR. Doe</b></p>
+
+
+   <div id="button-container">
+        <button id="patientList">Patient List</button>
+        <button id="Reports">Reports</button>
+        <button id="Appointments">View Appointments</button>
+    </div>
+</div>
+
+<div class="my-box">
+    <table>
+        <tr>
+            <th>Patient Name</th>
+            <th>View Patient</th>
+            <th>View Reports</th>
+            <th>Upload Report</th>
+            <th>Print</th>
+        </tr>
+      <tr>
+    <td contenteditable="true">John Doe</td>
+    <td><a href="johndoe.html"><button class="view-button">View</button></a></td>
+  <td><a href="drviewreportjd.html"><button class="view-button">View</button></a></td>
+    <td>
+      <form class="upload-form">
+        <input type="file" class="upload-input" id="upload-johndoe">
+        <label for="upload-johndoe" class="upload-label">Upload</label>
+      </form>
+    </td>
+            <td><button class="view-button" onclick="printReport('johndoe.html')">Print</button></td>
+
+        <!-- Add more rows for each record -->
+        <tr>
+            <td contenteditable="true">test one</td>
+            <td><button class="view-button">View</button></td>
+            <td><button class="view-button">View</button></td>
+            <td>
+              <form class="upload-form">
+                <input type="file" class="upload-input" id="upload-testone">
+                <label for="upload-testone" class="upload-label">Upload</label>
+              </form>
+            </td>
+            <td><button class="view-button" onclick="printReport()">Print</button></td>
+        </tr>
+          <tr>
+            <td contenteditable="true">Bob Smith</td>
+            <td><a href="bobtest.html"><button class="view-button">View</button></a></td>
+            <td><a href="drviewreportbt.html"><button class="view-button">View</button></a></td>
+            <td>
+              <form class="upload-form">
+                <input type="file" class="upload-input" id="upload-bobsmith">
+                <label for="upload-bobsmith" class="upload-label">Upload</label>
+              </form>
+            </td>
+            <td><button class="view-button" onclick="printReport('bobtest.html')">Print</button></td>
+        </tr>
+        <!-- Add more rows as needed -->
+    </table>
+</div>
+
+</body>
+</html>
